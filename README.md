@@ -1,4 +1,4 @@
-# Agnualr version
+# Angular version
 
 20.3.11.
 
