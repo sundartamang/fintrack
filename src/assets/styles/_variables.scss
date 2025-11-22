@@ -1,0 +1,53 @@
+// :root {
+//     --primary: #032033;
+//     --secondary: #f79920;
+//     --tertiary: #0a6c5e;
+
+//     --border: #e5e7eb;
+
+//     --white-smoky: #efefee;
+//     --white: #ffffff;
+
+//     --primary-color: #111827;
+//     --secondary-color: #6b7280;
+//     --tertiary-color: #9ca3af;
+
+//     --error: #ff0909;
+//     --success: #19d619;
+//     --warning: #f59e0b;
+// }
+
+
+:root {
+    /* Primary Palette */
+    // Dark Blue 
+    --primary: #032B44;
+    // Muted Orange 
+    --secondary: #F28C2B;
+    // Desaturated Green-Teal
+    --tertiary: #0D7B66;
+
+    /* Neutral / Backgrounds */
+    // Light Gray Border 
+    --border: #E5E7EB;
+    // Off-white background for cards/sections
+    --white-smoky: #EFEFEE;
+    // Pure White 
+    --white: #FFFFFF;
+
+    /* Text Colors */
+    // Almost black, main text
+    --primary-color: #111827;
+    // Dark gray, secondary text
+    --secondary-color: #4B5563;
+    // Light gray, hints / disabled text
+    --tertiary-color: #9CA3AF;
+
+    /* Functional Colors */
+    // Softer red for errors
+    --error: #E53935;
+    // Fresh green for success messages
+    --success: #22C55E;
+    // Warm yellow-orange for warnings
+    --warning: #F59E0B;
+}

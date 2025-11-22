@@ -1,0 +1,472 @@
+/* ===============================================
+    SPACING UTILITIES
+=============================================== */
+.p-5 {
+    margin: 5px;
+}
+
+.pt-5 {
+    padding-top: 5px;
+}
+
+.pb-5 {
+    padding-bottom: 5px;
+}
+
+.pl-5 {
+    padding-left: 5px;
+}
+
+.pr-5 {
+    padding-right: 5px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pb-10 {
+    padding-bottom: 10px;
+}
+
+.pl-10 {
+    padding-left: 10px;
+}
+
+.pr-10 {
+    padding-right: 10px;
+}
+
+.p-15 {
+    padding: 15px;
+}
+
+.pt-15 {
+    padding-top: 15px;
+}
+
+.pb-15 {
+    padding-bottom: 15px;
+}
+
+.pl-15 {
+    padding-left: 15px;
+}
+
+.pr-15 {
+    padding-right: 15px;
+}
+
+/* margin spacing */
+.m-5 {
+    margin: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.m-15 {
+    margin: 15px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+
+.ml-15 {
+    margin-left: 15px;
+}
+
+.mr-15 {
+    margin-right: 15px;
+}
+
+/* ===============================================
+    FLEX & GRID UTILITIES
+=============================================== */
+.flex {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* gap utilities */
+.gap-5 {
+    gap: 5px;
+}
+
+.gap-10 {
+    gap: 10px;
+}
+
+.gap-20 {
+    gap: 20px;
+}
+
+/* ===============================================
+    DISPLAY UTILITIES
+=============================================== */
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ===============================================
+    POSITION UTILITIES
+=============================================== */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.sticky {
+    position: sticky;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.left-0 {
+    left: 0;
+}
+
+.right-0 {
+    right: 0;
+}
+
+.bottom-0 {
+    bottom: 0;
+}
+
+/* ===============================================
+    SIZE UTILITIES
+=============================================== */
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.h-50 {
+    height: 50%;
+}
+
+/* ===============================================
+    OVERFLOW UTILITIES
+=============================================== */
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-scroll {
+    overflow: scroll;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+/* ===============================================
+    CURSOR UTILITIES
+=============================================== */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-default {
+    cursor: default;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+/* ===============================================
+    TEXT UTILITIES
+=============================================== */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+/* text overflow */
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* font sizes */
+.font-xsm {
+    font-size: 10px;
+}
+
+.font-sm {
+    font-size: 12px;
+}
+
+.font-md {
+    font-size: 16px;
+}
+
+.font-lg {
+    font-size: 20px;
+}
+
+.font-xl {
+    font-size: 24px;
+}
+
+/* font weights */
+.font-light {
+    font-weight: 300;
+}
+
+.font-normal {
+    font-weight: 400;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+/* font colors */
+.text-white {
+    color: var(--white);
+}
+
+.text-success {
+    color: var(--success);
+}
+
+.text-error {
+    color: var(--error);
+}
+
+.text-warning {
+    color: var(--warning);
+}
+
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+
+.text-tertiary {
+    color: var(--tertiary-color);
+}
+
+/* ===============================================
+    BACKGROUND COLOR UTILITIES
+=============================================== */
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
+
+.bg-tertiary {
+    background-color: var(--tertiary);
+}
+
+.bg-smoke {
+    background-color: var(--white-smoky);
+}
+
+/* ===============================================
+    BORDER & RADIUS UTILITIES
+=============================================== */
+.rounded {
+    border-radius: 4px;
+}
+
+.rounded-md {
+    border-radius: 8px;
+}
+
+.rounded-lg {
+    border-radius: 12px;
+}
+
+.border-0 {
+    border: none;
+}
+
+.border-1 {
+    border: 1px solid var(--border);
+}
+
+.border-2 {
+    border: 2px solid var(--border);
+}
+
+.border-primary {
+    border-color: var(--primary);
+}
+
+.border-secondary {
+    border-color: var(--secondary);
+}
+
+.border-t {
+    border-top: 1px solid var(--border);
+}
+
+.border-b {
+    border-bottom: 1px solid var(--border);
+}
+
+.border-l {
+    border-left: 1px solid var(--border);
+}
+
+.border-r {
+    border-right: 1px solid var(--border);
+}
+
+/* ===============================================
+    BUTTON UTILITIES
+=============================================== */
+.btn-primary {
+    background-color: var(--primary);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-tertiary {
+    background-color: var(--tertiary);
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-tertiary:hover {
+    opacity: 0.9;
+}
+
+
+/* =============================================
+    SHADOW UTILITIES
+============================================== */
+.shadow-sm {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-md {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
