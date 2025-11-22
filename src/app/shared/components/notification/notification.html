@@ -1,0 +1,6 @@
+@if(showNotification && message) {
+<div class="notification rounded-sm absolute pt-10 pb-10 pl-15 pr-15 flex justify-center align-center gap-10" [ngClass]="type">
+    <span class="font-md text-center text-white">{{ message }}</span>
+    <button class="rounded-sm pt-5 pb-5 shadow-sm" (click)="closeNotification()">close</button>
+</div>
+}
