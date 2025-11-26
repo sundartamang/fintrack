@@ -1,21 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Notification } from '../../shared/components';
+import { SpinnerService } from '../../shared/services';
+import { ToastService } from '../../shared/services';
 
 @Component({
   selector: 'app-landing',
-  imports: [CommonModule,Notification],
+  imports: [CommonModule],
   templateUrl: './landing.html',
   styleUrl: './landing.scss',
   standalone: true,
 })
 export class Landing {
-  message: string = 'Welcome to fintrack by sundar!';
-  showNotification: boolean = true;
-  type: 'success' | 'error' | 'info' = 'info';
-  
-  closeNotification(): void {
-    this.showNotification = false;
+
+  constructor(private spinnerService: SpinnerService, private toastService: ToastService) {}
+
+  testSpinner(): void { 
+    this.spinnerService.show();
   }
-  
+
+  testToast(): void{
+    this.toastService.error('Saved', 'User added successfully');
+  }
 }

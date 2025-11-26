@@ -1,9 +1,10 @@
-<div class="p-10 border-1 bg-primary text-white rounded shadow">
+<div class="p-10 border-1 bg-primary text-white rounded shadow h-full w-full">
     <p class="text-center text-white font-bold">landing works!</p>
+    <br />
+
+    <br />
+    <button (click)="testToast()" class="btn btn-primary">Click me</button>
     <br>
-    <app-notification 
-        [showNotification]="showNotification" 
-        [message]="message" 
-        [type]="type"
-        (close)="closeNotification()"></app-notification>
+    <button (click)="testSpinner()" class="btn btn-primary">Show spinner</button>
+
 </div>
