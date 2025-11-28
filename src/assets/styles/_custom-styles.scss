@@ -414,10 +414,6 @@
     color: var(--secondary-color);
 }
 
-.text-tertiary {
-    color: var(--tertiary-color);
-}
-
 /* ===============================================
     BACKGROUND COLOR UTILITIES
 =============================================== */
@@ -427,10 +423,6 @@
 
 .bg-secondary {
     background-color: var(--secondary);
-}
-
-.bg-tertiary {
-    background-color: var(--tertiary);
 }
 
 .bg-smoke {
@@ -495,30 +487,93 @@
 /* ===============================================
     BUTTON UTILITIES
 =============================================== */
-.btn-primary {
+
+/* blue button */
+.btn-blue {
+    background-color: var(--bg-primary-blue);
+    cursor: pointer;
+    color: #FFFFFF;
+}
+
+.btn-blue-outline {
+    background-color: transparent;
+    border: 2px solid var(--bg-primary-blue);
+    color: var(--bg-primary-blue);
+    cursor: pointer;
+}
+
+.btn-blue-outline:hover{
+    background-color: var(--bg-primary-blue);
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* primary button */
+.btn-primary{
     background-color: var(--primary);
     cursor: pointer;
     color: #FFFFFF;
 }
 
+.btn-primary-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.btn-primary-outline:hover{
+    background-color: var(--primary);
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* secondary button */
 .btn-secondary {
     background-color: var(--secondary);
     cursor: pointer;
     color: #FFFFFF;
 }
 
-.btn-tertiary {
+.btn-secondary-outline {
+    background-color: transparent;
+    border: 2px solid var(--secondary);
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+.btn-secondary-outline:hover{
+    background-color: var(--secondary);
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+/* tertiary button */
+.btn-tertiary{
     background-color: var(--tertiary);
     cursor: pointer;
     color: #FFFFFF;
 }
 
-.btn-primary:hover,
-.btn-secondary:hover,
-.btn-tertiary:hover {
-    opacity: 0.9;
+.btn-tertiary-outline {
+    background-color: transparent;
+    border: 2px solid var(--tertiary);
+    color: var(--tertiary);
+    cursor: pointer;
 }
 
+.btn-tertiary-outline:hover{
+    background-color: var(--tertiary);
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+.btn-blue:hover,
+.btn-primary:hover, 
+.btn-secondary:hover{
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
 
 /* =============================================
     SHADOW UTILITIES
