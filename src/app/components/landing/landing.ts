@@ -21,4 +21,11 @@ export class Landing {
   testToast(): void{
     this.toastService.error('Saved', 'User added successfully');
   }
+
+  toggleTheme(): void{
+    const element = document.querySelector('html');
+    if(element !== null){
+      element.classList.toggle('my-app-dark');
+    }
+  }
 }
