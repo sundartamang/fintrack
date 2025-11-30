@@ -1,13 +1,14 @@
 :root {
     /* Primary Palette */
-    --primary: #032B44;
+    --primary: #4bCC01;
+    --light-primary: #E8FCC9;
     --secondary: #F28C2B;
-    --tertiary: #0D7B66;
+    --secondary-light: #F9C58A;
+
 
     /* Backgrounds */
-    --white: #FFFFFF;
+    --white: #FEFFFF;
     --bg-body: #FFFFFF;
-    --bg-card: #EFEFEE;
     --border: #E5E7EB;
 
     /* Text Colors */
@@ -23,19 +24,18 @@
     --success: #22C55E;
     --warning: #f59e0b;
 
-    --bg-primary-blue: #374ef4;
 }
 
 html.my-app-dark {
     /* Primary Palette */
-    --primary: #032B44;
+    --primary: #4BCC01;
+    --light-primary: #18271C;
     --secondary: #F28C2B;
-    --tertiary: #0D7B66;
+    --secondary-light: #F9C58A;
 
     /* Backgrounds */
     --white: #0F172A;
-    --bg-body: #0F172A;
-    --bg-card: #1E293B;
+    --bg-body: #0c1216;
     --border: #334155;
 
     /* Text Colors */

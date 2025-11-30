@@ -1,0 +1,13 @@
+@use '../../../../assets/styles/variables' as *;
+
+::ng-deep .p-menubar {
+    border: none !important;
+    border-radius: 0px !important;
+    background-color: var(--bg-body) !important;
+    border-bottom: 1px solid var(--border) !important;
+}
+
+::ng-deep .p-menubar-root-list {
+    border-radius: 0px !important;
+    background-color: var(--bg-body) !important;
+}

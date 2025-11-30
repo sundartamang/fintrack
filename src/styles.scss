@@ -1,6 +1,7 @@
 @use './assets/styles/variables' as *;
 @use './assets/styles/custom-styles' as *;
 @use './assets/styles/overrides' as *;
+@import "primeicons/primeicons.css";
 
 * {
   box-sizing: border-box;
@@ -16,6 +17,7 @@ body {
   font-family: Arial, sans-serif;
   color: var(--primary-color);
   background-color: var(--bg-body);
+  font-size: 14px;
 }
 
 a {

@@ -21,12 +21,12 @@
     padding-right: 5px;
 }
 
-.px-5{
+.px-5 {
     padding-left: 5px;
     padding-right: 5px;
 }
 
-.py-5{
+.py-5 {
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -51,12 +51,12 @@
     padding-right: 10px;
 }
 
-.px-10{
+.px-10 {
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.py-10{
+.py-10 {
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -81,12 +81,12 @@
     padding-right: 15px;
 }
 
-.px-15{
+.px-15 {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.py-15{
+.py-15 {
     padding-top: 15px;
     padding-bottom: 15px;
 }
@@ -488,28 +488,8 @@
     BUTTON UTILITIES
 =============================================== */
 
-/* blue button */
-.btn-blue {
-    background-color: var(--bg-primary-blue);
-    cursor: pointer;
-    color: #FFFFFF;
-}
-
-.btn-blue-outline {
-    background-color: transparent;
-    border: 2px solid var(--bg-primary-blue);
-    color: var(--bg-primary-blue);
-    cursor: pointer;
-}
-
-.btn-blue-outline:hover{
-    background-color: var(--bg-primary-blue);
-    color: #FFFFFF;
-    transition: all 0.3s ease;
-}
-
 /* primary button */
-.btn-primary{
+.btn-primary {
     background-color: var(--primary);
     cursor: pointer;
     color: #FFFFFF;
@@ -522,12 +502,18 @@
     cursor: pointer;
 }
 
-.btn-primary-outline:hover{
+.btn-primary-outline:hover {
     background-color: var(--primary);
     color: #FFFFFF;
     transition: all 0.3s ease;
 }
 
+/* light green  */
+.btn-light-green {
+    background-color: var(--light-primary);
+    cursor: pointer;
+    color: var(--primary);
+}
 /* secondary button */
 .btn-secondary {
     background-color: var(--secondary);
@@ -542,35 +528,14 @@
     cursor: pointer;
 }
 
-.btn-secondary-outline:hover{
+.btn-secondary-outline:hover {
     background-color: var(--secondary);
     color: #FFFFFF;
     transition: all 0.3s ease;
 }
 
-/* tertiary button */
-.btn-tertiary{
-    background-color: var(--tertiary);
-    cursor: pointer;
-    color: #FFFFFF;
-}
-
-.btn-tertiary-outline {
-    background-color: transparent;
-    border: 2px solid var(--tertiary);
-    color: var(--tertiary);
-    cursor: pointer;
-}
-
-.btn-tertiary-outline:hover{
-    background-color: var(--tertiary);
-    color: #FFFFFF;
-    transition: all 0.3s ease;
-}
-
-.btn-blue:hover,
-.btn-primary:hover, 
-.btn-secondary:hover{
+.btn-primary:hover,
+.btn-secondary:hover {
     opacity: 0.9;
     transition: opacity 0.3s ease;
 }
