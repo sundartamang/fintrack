@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './company-list.html',
   styleUrl: './company-list.scss',
+  standalone: true
 })
 export class CompanyList {
 

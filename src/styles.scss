@@ -1,6 +1,7 @@
 @use './assets/styles/variables' as *;
 @use './assets/styles/custom-styles' as *;
 @use './assets/styles/overrides' as *;
+
 @import "primeicons/primeicons.css";
 
 * {
@@ -40,10 +41,6 @@ textarea {
   background-color: var(--bg-card);
   color: var(--primary-color);
   border: 1px solid var(--border);
-}
-
-input::placeholder {
-  color: var(--tertiary-color);
 }
 
 h1,

@@ -9,6 +9,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { MessageService } from 'primeng/api';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { loaderInterceptor } from './shared/interceptors';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +26,7 @@ export const appConfig: ApplicationConfig = {
         },
       },
     }),
-    MessageService, 
+    MessageService,
+    provideHttpClient(withInterceptors([loaderInterceptor]))
   ],
 };

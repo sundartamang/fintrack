@@ -3,10 +3,12 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { RouterModule } from "@angular/router";
 import { MenubarModule } from 'primeng/menubar';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, RouterModule, MenubarModule],
+  imports: [CommonModule, FormsModule, RouterModule, MenubarModule, ToggleSwitchModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
 })
@@ -15,7 +17,6 @@ export class Navbar implements OnInit {
   items: MenuItem[] | undefined;
 
   isDarkMode = true;
-  icon = 'pi pi-moon';
 
   ngOnInit() {
     this.initializeMenuItems();
@@ -29,16 +30,14 @@ export class Navbar implements OnInit {
     if (!html) return;
 
     html.classList.toggle('my-app-dark');
-    this.isDarkMode = html.classList.contains('my-app-dark');
-
-    this.icon = this.isDarkMode ? 'pi pi-moon' : 'pi pi-sun';
   }
 
   private initializeMenuItems(): void {
     this.items = [
       {
         label: 'Home',
-        routerLink: '/'
+        routerLink: '/',
+        routerLinkActiveOptions: { exact: true }
       },
       {
         label: 'Valutions',

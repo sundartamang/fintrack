@@ -11,3 +11,15 @@
     border-radius: 0px !important;
     background-color: var(--bg-body) !important;
 }
+
+::ng-deep .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider {
+    background-color: var(--primary) !important;
+}
+
+::ng-deep .p-toggleswitch {
+    height: 1.3rem !important;
+}
+
+::ng-deep .p-menubar-item-link-active {
+    color: var(--primary) !important;
+}

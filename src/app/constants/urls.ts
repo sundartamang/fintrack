@@ -1,0 +1,1 @@
+export const ANSU_BASE_URL ="https://backend.ansuinvest.com/api/web/v1/"

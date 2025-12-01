@@ -1,1 +1,81 @@
-<p>valuation works!</p>
+<div class="p-15 shadow-sm ">
+    <div class="mb-15 flex align-center justify-center rounded">
+        <p-selectbutton [options]="valuationHeader" [(ngModel)]="selectedValuationHeader" [multiple]="false"
+            optionLabel="name" optionValue="value" (ngModelChange)="onValuationFilterChange($event)" />
+    </div>
+    <div class="mt-10">
+        <p-table 
+            #dt2
+            [value]="filteredValuations" 
+            stripedRows 
+            [responsiveLayout]="'scroll'" 
+            [tableStyle]="{ 'min-width': '50rem'}"
+            [size]="selectedValuationHeader" 
+            [paginator]="true"
+            [rows]="rows" 
+            [rowsPerPageOptions]="[20, 50, 100, 150]" 
+            [showCurrentPageReport]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+            [globalFilterFields]="['company_name']">
+
+            <!-- search -->
+            <ng-template pTemplate="caption">
+                <p-inputgroup>
+                    <input
+                        pInputText
+                        type="text"
+                        (input)="dt2.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Search by comapany name"
+                        class="search-input"
+                    />
+                </p-inputgroup>
+                <div class="flex justify-content-end">
+                </div>
+            </ng-template>
+
+            <!-- header -->
+            <ng-template #header>
+                <tr>
+                    <th style="width: 5%">S.N.</th>
+                    <th pSortableColumn="company_name" style="min-width: 300px; width: 40%;">
+                        Company
+                        <p-sortIcon field="company_name" />
+                    </th>
+                    <th pSortableColumn="ltp" style="width: 15%">
+                        LTP
+                        <p-sortIcon field="ltp" />
+                    </th>
+                    <th pSortableColumn="valuation" style="min-width: 140px; width: 25%">
+                        Valuation
+                        <p-sortIcon field="valuation" />
+                    </th>
+                    <th pSortableColumn="intrinsic_value" style="min-width: 150px; width: 15%">
+                        Intrinsic Value
+                        <p-sortIcon field="intrinsic_value" />
+                    </th>
+                </tr>
+            </ng-template>
+
+            <!-- body -->
+            <ng-template #body let-company let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{ rowIndex + 1 }}</td>
+                    <td pTooltip="{{company.company_sort_code}}" tooltipPosition="top">{{ company.company_name }}</td>
+                    <td>{{company.ltp | number}}</td>
+                    <td>{{ company.valuation }}</td>
+                    <td pTooltip="Intrinsic date: {{company.intrisic_date}}" tooltipPosition="top">{{ company.intrinsic_value | number }}</td>
+                </tr>
+            </ng-template>
+
+            <!-- empty message -->
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5" class="p-3" style="text-align: center;">
+                        <i class="pi pi-info-circle mr-2"></i>
+                        No data available.
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

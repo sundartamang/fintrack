@@ -1,0 +1,25 @@
+@use '../../../assets/styles/variables' as *;
+
+::ng-deep .p-selectbutton {
+    border: 1px solid var(--border);
+
+    .p-togglebutton-label {
+        font-size: 14px !important;
+    }
+
+    .p-togglebutton-checked {
+        .p-togglebutton-content {
+            background-color: var(--light-primary);
+            color: var(--primary);
+        }
+    }
+}
+
+::ng-deep .p-inputgroup {
+    display: flex;
+    justify-content: end;
+
+    .search-input{
+        max-width: 350px !important;
+    }
+}
