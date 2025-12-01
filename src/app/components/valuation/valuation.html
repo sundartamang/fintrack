@@ -16,7 +16,8 @@
             [rowsPerPageOptions]="[20, 50, 100, 150]" 
             [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
-            [globalFilterFields]="['company_name']">
+            [globalFilterFields]="['company_name']"
+            styleClass="valuation-table-sticky">
 
             <!-- search -->
             <ng-template pTemplate="caption">
@@ -36,8 +37,8 @@
             <!-- header -->
             <ng-template #header>
                 <tr>
-                    <th style="width: 5%">S.N.</th>
-                    <th pSortableColumn="company_name" style="min-width: 300px; width: 40%;">
+                    <th style="width: 5%">#</th>
+                    <th pSortableColumn="company_name" [ngStyle]="{'min-width': isSmallScreen ? '80px' : '300px','width': isSmallScreen ? '15%' : '40%'}">
                         Company
                         <p-sortIcon field="company_name" />
                     </th>
@@ -45,7 +46,7 @@
                         LTP
                         <p-sortIcon field="ltp" />
                     </th>
-                    <th pSortableColumn="valuation" style="min-width: 140px; width: 25%">
+                    <th pSortableColumn="valuation" style="min-width: 120px; width: 25%">
                         Valuation
                         <p-sortIcon field="valuation" />
                     </th>
@@ -60,9 +61,15 @@
             <ng-template #body let-company let-rowIndex="rowIndex">
                 <tr>
                     <td>{{ rowIndex + 1 }}</td>
-                    <td pTooltip="{{company.company_sort_code}}" tooltipPosition="top">{{ company.company_name }}</td>
+                    <td pTooltip="{{ isSmallScreen ? company.company_sort_code : company.company_name }}" tooltipPosition="top">
+                        {{ isSmallScreen ? company.company_sort_code : company.company_name }}
+                    </td>
                     <td>{{company.ltp | number}}</td>
-                    <td>{{ company.valuation }}</td>
+                    <td> 
+                        <ng-container>
+                            <span [ngClass]="getClassNameBaseValuationType(company.valuation)">{{ company.valuation }}</span>
+                        </ng-container>
+                    </td>
                     <td pTooltip="Intrinsic date: {{company.intrisic_date}}" tooltipPosition="top">{{ company.intrinsic_value | number }}</td>
                 </tr>
             </ng-template>

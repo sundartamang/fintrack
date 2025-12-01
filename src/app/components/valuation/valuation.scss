@@ -23,3 +23,27 @@
         max-width: 350px !important;
     }
 }
+
+/* make second column sticky */
+.valuation-table-sticky ::ng-deep .p-datatable-tbody > tr > td:nth-child(2),
+.valuation-table-sticky ::ng-deep .p-datatable-thead > tr > th:nth-child(2) {
+    position: sticky;
+    left: 15px;
+    z-index: 9;
+}
+
+.highly-overvalued{
+    color: var(--error);
+}
+
+.overvalued{
+    color: var(--warning);
+}
+
+.fairly-valued{
+    color: var(--info);
+}
+
+.undervalued{
+    color: var(--success);
+}

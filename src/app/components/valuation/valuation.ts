@@ -5,7 +5,7 @@ import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TooltipModule } from 'primeng/tooltip';
-import { DecimalPipe } from '@angular/common';
+import { CommonModule, DecimalPipe } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { Table } from 'primeng/table';
 import { InputGroupModule } from 'primeng/inputgroup';
@@ -22,6 +22,7 @@ export enum ValuationCategory {
 @Component({
   selector: 'app-valuation',
   imports: [
+    CommonModule,
     TableModule,
     FormsModule,
     SelectButtonModule,
@@ -52,6 +53,8 @@ export class Valuation implements OnInit, OnDestroy {
   rows = 20;
   @ViewChild(Table) table!: Table;
 
+  isSmallScreen: boolean = false;
+
   private subscription!: Subscription;
 
   constructor(private ansuApiService: AnsuapiService) { }
@@ -60,12 +63,24 @@ export class Valuation implements OnInit, OnDestroy {
     this.getValuations();
     this.setValuationHeader();
     this.setPagination();
+    this.checkScreenSize();
   }
 
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  getClassNameBaseValuationType(valuation: string): string {
+    const valuationClassMap: Record<string, string> = {
+      [ValuationCategory.highlyOverValued]: 'highly-overvalued',
+      [ValuationCategory.overValued]: 'overvalued',
+      [ValuationCategory.fairlyValued]: 'fairly-valued',
+      [ValuationCategory.underValued]: 'undervalued'
+    };
+
+    return valuationClassMap[valuation] || '';
   }
 
   onValuationFilterChange(category: ValuationCategory) {
@@ -191,5 +206,9 @@ export class Valuation implements OnInit, OnDestroy {
     } else {
       this.rows = 20;
     }
+  }
+
+  private checkScreenSize() {
+    this.isSmallScreen = window.innerWidth <= 768;
   }
 }
