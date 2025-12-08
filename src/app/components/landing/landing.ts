@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NEPAL_STOCK_EXCHANGE, NEPSE_ALPHA } from '../../constants';
 
 @Component({
   selector: 'app-landing',
@@ -8,8 +9,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './landing.scss',
   standalone: true,
 })
-export class Landing {
+export class Landing implements OnInit {
 
-  constructor() {}
+  nepalStockExchange: string = NEPAL_STOCK_EXCHANGE;
+  nepseAlphaAdvanceChart: string = `${NEPSE_ALPHA}nepse-chart`;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

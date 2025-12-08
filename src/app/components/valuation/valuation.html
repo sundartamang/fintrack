@@ -7,12 +7,12 @@
         <p-table 
             #dt2
             [value]="filteredValuations" 
-            stripedRows 
             [responsiveLayout]="'scroll'" 
             [tableStyle]="{ 'min-width': '50rem'}"
             [size]="selectedValuationHeader" 
             [paginator]="true"
             [rows]="rows" 
+            stripedRows
             [rowsPerPageOptions]="[20, 50, 100, 150]" 
             [showCurrentPageReport]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
@@ -42,17 +42,22 @@
                         Company
                         <p-sortIcon field="company_name" />
                     </th>
-                    <th pSortableColumn="ltp" style="width: 15%">
-                        LTP
-                        <p-sortIcon field="ltp" />
-                    </th>
-                    <th pSortableColumn="valuation" style="min-width: 120px; width: 25%">
+                    <th pSortableColumn="valuation" style="min-width: 120px;" class="text-center">
                         Valuation
                         <p-sortIcon field="valuation" />
                     </th>
-                    <th pSortableColumn="intrinsic_value" style="min-width: 150px; width: 15%">
+                    <th pSortableColumn="ltp" class="text-center">
+                        LTP
+                        <p-sortIcon field="ltp" />
+                    </th>
+                    <th pSortableColumn="intrinsic_value" style="min-width: 150px;" class="text-center">
                         Intrinsic Value
                         <p-sortIcon field="intrinsic_value" />
+                        <i class="pi pi-info-circle ml-15" pTooltip="{{INTRINSIC_VALUE}}"></i>
+                    </th>
+                    <th class="text-center" pSortableColumn="intrisic_date">
+                        Intrinsic Value
+                        <p-sortIcon field="intrisic_date" />
                     </th>
                 </tr>
             </ng-template>
@@ -61,24 +66,25 @@
             <ng-template #body let-company let-rowIndex="rowIndex">
                 <tr>
                     <td>{{ rowIndex + 1 }}</td>
-                    <td pTooltip="{{ isSmallScreen ? company.company_sort_code : company.company_name }}" tooltipPosition="top">
-                        {{ isSmallScreen ? company.company_sort_code : company.company_name }}
+                    <td pTooltip="{{ isSmallScreen ? company.company_name : company.company_sort_code }}" tooltipPosition="top">
+                        <a (click)="redirectToCompanyDetailPage(company)">
+                            {{ isSmallScreen ? company.company_sort_code : company.company_name }}
+                        </a>
                     </td>
-                    <td>{{company.ltp | number}}</td>
-                    <td> 
-                        <ng-container>
-                            <span [ngClass]="getClassNameBaseValuationType(company.valuation)">{{ company.valuation }}</span>
-                        </ng-container>
+                    <td class="text-center"> 
+                        <span [ngClass]="getClassNameBaseValuationType(company.valuation)">{{ company.valuation }}</span>
                     </td>
-                    <td pTooltip="Intrinsic date: {{company.intrisic_date}}" tooltipPosition="top">{{ company.intrinsic_value | number }}</td>
+                    <td class="text-center">{{company.ltp | number}}</td>
+                    <td class="text-center"tooltipPosition="top">{{ company.intrinsic_value | number }}</td>
+                    <td class="text-center">{{company.intrisic_date}}</td>
                 </tr>
             </ng-template>
 
             <!-- empty message -->
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="5" class="p-3" style="text-align: center;">
-                        <i class="pi pi-info-circle mr-2"></i>
+                    <td colspan="5" class="p-3 text-center">
+                        <i class="pi pi-info-circle mr-5"></i>
                         No data available.
                     </td>
                 </tr>

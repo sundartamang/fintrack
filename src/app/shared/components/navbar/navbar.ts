@@ -15,14 +15,12 @@ import { FormsModule } from '@angular/forms';
 export class Navbar implements OnInit {
 
   items: MenuItem[] | undefined;
-
-  isDarkMode = true;
+  isDarkMode: boolean = true;
 
   ngOnInit() {
     this.initializeMenuItems();
     this.applyDefaultTheme();
   }
-
 
   toggleTheme(): void {
     const html = document.querySelector('html');
@@ -43,10 +41,10 @@ export class Navbar implements OnInit {
         label: 'Valutions',
         routerLink: '/valuation'
       },
-      {
-        label: 'Company',
-        routerLink: '/company'
-      }
+      // {
+      //   label: 'Company',
+      //   routerLink: '/company'
+      // }
     ]
   }
 

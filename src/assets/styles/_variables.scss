@@ -1,6 +1,7 @@
 :root {
     /* Primary Palette */
     --primary: #4bCC01;
+    // --primary: rgb(29, 155, 240);
     --light-primary: #E8FCC9;
     --secondary: #F28C2B;
     --secondary-light: #F9C58A;
@@ -9,6 +10,7 @@
     /* Backgrounds */
     --white: #FEFFFF;
     --bg-body: #FFFFFF;
+    // --bg-body: #FEEEEE;
     --border: #E5E7EB;
 
     /* Text Colors */
@@ -24,11 +26,15 @@
     --success: #22C55E;
     --warning: #f59e0b;
     --info: #3B82F6;
+
+    --stripe-odd: #FEFFFF;
+    --stripe-even: #f9FBFD;
 }
 
 html.my-app-dark {
     /* Primary Palette */
     --primary: #4BCC01;
+    // --primary: rgb(29, 155, 240);
     --light-primary: #18271C;
     --secondary: #F28C2B;
     --secondary-light: #F9C58A;
@@ -36,7 +42,8 @@ html.my-app-dark {
     /* Backgrounds */
     --white: #0F172A;
     --bg-body: #0c1216;
-    --border: #334155;
+    // --bg-body: #0C1421;
+    --border: #27272A;
 
     /* Text Colors */
     --primary-color: #F3F4F6;
@@ -51,4 +58,8 @@ html.my-app-dark {
     --success: #4ADE80;
     --warning: #FBBF24;
     --info: #60A5FA;
+
+    // stripe table
+    --stripe-odd: #18191A;
+    --stripe-even: #09090A;
 }

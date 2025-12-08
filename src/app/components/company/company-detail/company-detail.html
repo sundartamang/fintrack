@@ -1,0 +1,218 @@
+<div class="p-10 flex flex-row gap-10">
+    <button class="pr-10 pl-10 pt-5 pb-5 rounded-md" (click)="openTradingViewChart()">
+        Trading view Chart
+        <i class="pi pi-external-link ml-5 font-sm"></i>
+    </button>
+    <button class="pr-10 pl-10 pt-5 pb-5 rounded-md" (click)="openNepseAlpha()">
+        Nepse Alpha
+        <i class="pi pi-external-link ml-5 font-sm"></i>
+    </button>
+    <button class="pr-10 pl-10 pt-5 pb-5 rounded-md" (click)="openMeroLagani()">
+        Mero lagani
+        <i class="pi pi-external-link ml-5 font-sm"></i>
+    </button>
+    <button class="pr-10 pl-10 pt-5 pb-5 rounded-md" (click)="openAnsu()">
+        Ansu
+        <i class="pi pi-external-link ml-5 font-sm"></i>
+    </button>
+    <button class="pr-10 pl-10 pt-5 pb-5 rounded-md" (click)="openShareSansar()">
+        Share sansar
+        <i class="pi pi-external-link ml-5 font-sm"></i>
+    </button>
+</div>
+
+<p-tabs value="0" scrollable>
+    <p-tablist>
+        <p-tab value="0">Summary</p-tab>
+        <p-tab value="1">Relative valuation</p-tab>
+        <p-tab value="2">Dividends</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+        <p-tabpanel value="0">
+            <div class="detail-container">
+                <div class="left">
+                    <!-- details -->
+                    @if(details){
+                    <h4>
+                        {{details.company_name}}
+                        @if(details.short_code){
+                        <span class="font-sm">({{details.short_code}})</span>
+                        }
+                    </h4>
+                    <br>
+                    <p>
+                        <span class="font-lg">{{details.ltp | number}}</span>
+                        @if(details.indicator === 'increase'){
+                        <i class="pi pi-angle-up increase ml-5 font-sm"></i>
+                        }
+                        @if(details.indicator === 'decrease'){
+                        <i class="pi pi-angle-down decrease ml-5 font-sm"></i>
+                        }
+                        @if(details.change){
+                        <span class=""
+                            [ngClass]="{'increase': details.indicator == 'increase', 'decrease': details.indicator == 'decrease'}">
+                            {{details.change}}
+                        </span>
+                        }
+                        @if(details.change_per){
+                        <span class=""
+                            [ngClass]="{'increase': details.indicator === 'increase', 'decrease': details.indicator === 'decrease'}">
+                            ({{details.change_per}}%)
+                        </span>
+                        }
+                    </p>
+                    <br>
+                    }@else{
+                    <ng-container *ngTemplateOutlet="emptymessage"></ng-container>
+                    }
+
+                    <!-- valuations -->
+                    @if(valuation){
+                    <table class="striperow">
+                        <!-- Market Info -->
+                        <tr>
+                            <th colspan="2" class="text-left">Market Info</th>
+                        </tr>
+                        <tr>
+                            <td>Market Price</td>
+                            <td class="text-right">
+                                <span class="npr-font">NPR.</span>
+                                {{valuation.market_price | number}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>60 Days Average</td>
+                            <td class="text-right">
+                                <span class="npr-font">NPR.</span>
+                                {{valuation.SIXTY_DAYS_AVERAGE}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Market Cap (Million)</td>
+                            <td class="text-right">
+                                <span class="npr-font">NPR.</span>
+                                {{valuation.MARKET_CAP}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Intrinsic Value
+                                <i class="pi pi-info-circle ml-10" pTooltip="{{INTRINSIC_VALUE}}"></i>
+                            </td>
+                            <td class="text-right">
+                                <span class="npr-font">NPR.</span>
+                                {{valuation.intrinsic_value | number}}
+                                @if(valuation.intrisic_date){
+                                <span class="font-sm">
+                                    (As of {{valuation.intrisic_date}})
+                                </span>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Valuation</td>
+                            <td class="text-right">{{details?.valuation}}</td>
+                        </tr>
+
+                        <!-- Profitability -->
+                        <tr>
+                            <th colspan="2" class="text-left">Profitability</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                EPS
+                                <i class="pi pi-info-circle ml-10" pTooltip="{{EPS}}"></i>
+                            </td>
+                            <td class="text-right">{{valuation.eps}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                PE Ratio
+                                <i class="pi pi-info-circle ml-10" pTooltip="{{PE}}"></i>
+                            </td>
+                            <td class="text-right">{{valuation.pe_ratio}}</td>
+                        </tr>
+
+                        <!-- Valuation -->
+                        <tr>
+                            <th colspan="2" class="text-left">Valuation</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Book Value Per Share
+                                <i class="pi pi-info-circle ml-10" pTooltip="{{BOOK_VALUE_PER_SHARE}}"></i>
+                            </td>
+                            <td class="text-right">
+                                <span class="npr-font">NPR.</span>
+                                {{valuation.BOOK_VALUE_PER_SHARE}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Price/Book</td>
+                            <td class="text-right">{{valuation.pbv}}</td>
+                        </tr>
+
+                        <!-- Return Ratios -->
+                        <tr>
+                            <th colspan="2" class="text-left">Return Ratios</th>
+                        </tr>
+                        <tr>
+                            <td>ROA % TTM</td>
+                            <td class="text-right">{{valuation.ROA_TTM}}</td>
+                        </tr>
+                        <tr>
+                            <td>ROE % TTM</td>
+                            <td class="text-right">{{valuation.ROE_TTM}}</td>
+                        </tr>
+                    </table>
+                    }@else {
+                    <ng-container *ngTemplateOutlet="emptymessage"></ng-container>
+                    }
+                </div>
+                <div class="right">
+                    <p-selectbutton 
+                        [options]="chartYears" 
+                        [(ngModel)]="defaultYear" 
+                        [multiple]="false"
+                        optionLabel="name" 
+                        optionValue="value" 
+                        (ngModelChange)="onDateChange($event)" />
+
+                    <highcharts-chart 
+                        [Highcharts]="Highcharts" 
+                        [options]="chartOptions"
+                        style="width: 100%; height: 100%; display: block;"></highcharts-chart>
+                </div>
+            </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+            <p class="m-0">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
+                rem
+                aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
+                explicabo.
+                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+                dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam
+                eius
+                modi.
+            </p>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+            <p class="m-0">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                deleniti
+                atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident,
+                similique
+                sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
+                facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                impedit quo minus.
+            </p>
+        </p-tabpanel>
+    </p-tabpanels>
+</p-tabs>
+
+
+<ng-template #emptymessage>
+    <i class="pi pi-info-circle mr-5"></i>
+    No data available.
+</ng-template>

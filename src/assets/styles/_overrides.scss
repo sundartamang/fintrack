@@ -3,7 +3,36 @@
     font-size: 14px !important;
 }
 
-.p-datatable{
+.p-datatable {
     min-width: '50rem';
     overflow-x: 'auto' !important;
+}
+
+.p-paginator-page.p-paginator-page-selected {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+}
+
+.p-paginator-page {
+    min-width: unset !important;
+    height: 2rem !important;
+    width: 2rem !important;
+}
+
+.p-splitter-gutter {
+    width: 1px !important;
+}
+
+table.striperow {
+    width: 100%;
+    
+    tr {
+        &:nth-child(even) {
+            background-color: var(--stripe-even);
+        }
+
+        &:nth-child(odd) {
+            background-color: var(--stripe-odd);
+        }
+    }
 }

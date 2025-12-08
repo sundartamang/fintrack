@@ -1,0 +1,126 @@
+@use '../../../../assets/styles/variables' as *;
+
+::ng-deep .p-selectbutton {
+    border: 1px solid var(--border);
+    margin-bottom: 15px;
+
+    .p-togglebutton-label {
+        font-size: 14px !important;
+    }
+
+    .p-togglebutton-checked {
+        .p-togglebutton-content {
+            background-color: var(--light-primary);
+            color: var(--primary);
+        }
+    }
+}
+
+::ng-deep .p-tab-active {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+::ng-deep .p-tabs-scrollable {
+    border: 1px solid var(--border);
+}
+
+.increase {
+    color: var(--success);
+}
+
+.decrease {
+    color: var(--error);
+}
+
+table {
+    border-collapse: collapse;
+
+    tr {
+
+        td,
+        th {
+            padding: 10px;
+            border: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--primary);
+        }
+    }
+}
+
+.detail-container {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: 1rem;
+    height: 100%;
+
+    .left {
+        flex: 0 0 30%; // 30% width
+        border-right: 1px solid var(--border);
+        padding-right: 15px;
+    }
+
+    .right {
+        flex: 1; // take remaining width
+        min-width: 0; // important to prevent overflow
+        height: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .detail-container {
+        grid-template-columns: 1fr;
+    }
+
+    .left {
+        border-right: none;
+        padding-right: 0;
+    }
+}
+
+.font-sm {
+    font-size: 10px !important;
+    font-weight: normal !important;
+}
+
+.npr-font {
+    font-size: 10px !important;
+    color: var(--secondary);
+}
+
+.pi {
+    cursor: pointer;
+}
+
+::ng-deep .highcharts-yaxis-labels {
+    text {
+        color: var(--primary-color) !important;
+        fill: var(--primary-color) !important;
+    }
+}
+
+::ng-deep .highcharts-xaxis-labels {
+    text {
+        color: var(--primary-color) !important;
+        fill: var(--primary-color) !important;
+    }
+}
+
+::ng-deep .highcharts-yaxis-grid {
+    path {
+        color: var(--border) !important;
+        fill: var(--border) !important;
+        stroke: var(--border) !important;
+    }
+}
+
+::ng-deep .highcharts-xaxis {
+    path {
+        color: var(--border) !important;
+        fill: var(--border) !important;
+        stroke: var(--border) !important;
+        stroke-width: 2 !important;
+    }
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { AnsuapiService } from '../../shared/services/ansuapi.service';
+import { AnsuapiService, LocalStorageService } from '../../shared/services';
 import { Subscription } from 'rxjs';
 import { TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
@@ -10,14 +10,17 @@ import { ButtonModule } from 'primeng/button';
 import { Table } from 'primeng/table';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputTextModule } from 'primeng/inputtext';
+import { COMPANY_VALUATIONS, HTTP_STATUS_OK, INTRINSIC_VALUE } from '../../constants';
 
 export enum ValuationCategory {
   all = 'All',
+  underValued = 'Under Valued',
+  fairlyValued = 'Fairly Valued',
   overValued = 'Over Valued',
   highlyOverValued = 'Highly Overvalued',
-  fairlyValued = 'Fairly Valued',
-  underValued = 'Under Valued',
 }
+
+const THREE_DAYS = 3 * 24 * 60 * 60 * 1000;
 
 @Component({
   selector: 'app-valuation',
@@ -41,26 +44,41 @@ export class Valuation implements OnInit, OnDestroy {
 
   allValuations: any[] = [];
   filteredValuations: any[] = [];
+
+  undervaluedCompanies: any[] = [];
+  fairlyValuedCompanies: any[] = [];
   overvaluedCompanies: any[] = [];
   highlyOvervaluedCompanies: any[] = [];
-  fairlyValuedCompanies: any[] = [];
-  undervaluedCompanies: any[] = [];
 
   valuationHeader!: any[];
-  selectedValuationHeader: any = ValuationCategory.all;
+  selectedValuationHeader: any = ValuationCategory.underValued;
+  
+  INTRINSIC_VALUE = INTRINSIC_VALUE;
 
   first = 0;
   rows = 20;
   @ViewChild(Table) table!: Table;
-
   isSmallScreen: boolean = false;
 
   private subscription!: Subscription;
 
-  constructor(private ansuApiService: AnsuapiService) { }
+  constructor(
+    private ansuApiService: AnsuapiService,
+    private localStorageService: LocalStorageService
+  ) { }
 
   ngOnInit(): void {
-    this.getValuations();
+    const cachedValuations = this.localStorageService.getFromLocalStorageWithExpiry<any[]>(COMPANY_VALUATIONS);
+
+    if (cachedValuations && cachedValuations.length > 0) {
+      this.allValuations = cachedValuations;
+      this.filteredValuations = [...this.allValuations];
+      this.onValuationFilterChange(ValuationCategory.underValued);
+      this.categorizeCompaniesByValuation();
+    } else {
+      this.getValuations();
+    }
+
     this.setValuationHeader();
     this.setPagination();
     this.checkScreenSize();
@@ -74,10 +92,10 @@ export class Valuation implements OnInit, OnDestroy {
 
   getClassNameBaseValuationType(valuation: string): string {
     const valuationClassMap: Record<string, string> = {
-      [ValuationCategory.highlyOverValued]: 'highly-overvalued',
-      [ValuationCategory.overValued]: 'overvalued',
+      [ValuationCategory.underValued]: 'undervalued',
       [ValuationCategory.fairlyValued]: 'fairly-valued',
-      [ValuationCategory.underValued]: 'undervalued'
+      [ValuationCategory.highlyOverValued]: 'highly-overvalued',
+      [ValuationCategory.overValued]: 'overvalued'
     };
 
     return valuationClassMap[valuation] || '';
@@ -125,16 +143,22 @@ export class Valuation implements OnInit, OnDestroy {
     return this.filteredValuations ? this.first === 0 : true;
   }
 
+  redirectToCompanyDetailPage(company: any): void {
+    const url = `/company/${company.company_sort_code}`;
+    window.open(url, '_blank');
+  }
+
   private getValuations(): void {
     this.subscription = this.ansuApiService.getAnsuValuation().subscribe({
       next: (response) => {
         const { statusCode, data } = response;
-        if (statusCode === 200 && Array.isArray(data) && data.length > 0) {
+        if (statusCode === HTTP_STATUS_OK && Array.isArray(data) && data.length > 0) {
 
           const cleanedData = this.cleanAndSortValuationData(data);
-
           this.allValuations = cleanedData;
-          this.filteredValuations = cleanedData;
+          this.localStorageService.saveToLocalStorageWithExpiry(COMPANY_VALUATIONS, cleanedData, THREE_DAYS);
+
+          this.onValuationFilterChange(ValuationCategory.underValued)
           this.categorizeCompaniesByValuation();
 
         } else {
@@ -157,6 +181,14 @@ export class Valuation implements OnInit, OnDestroy {
     for (let company of this.allValuations) {
 
       switch (company.valuation) {
+        case ValuationCategory.underValued:
+          this.undervaluedCompanies.push(company);
+          break;
+
+        case ValuationCategory.fairlyValued:
+          this.fairlyValuedCompanies.push(company);
+          break;
+
         case ValuationCategory.overValued:
           this.overvaluedCompanies.push(company);
           break;
@@ -164,32 +196,24 @@ export class Valuation implements OnInit, OnDestroy {
         case ValuationCategory.highlyOverValued:
           this.highlyOvervaluedCompanies.push(company);
           break;
-
-        case ValuationCategory.fairlyValued:
-          this.fairlyValuedCompanies.push(company);
-          break;
-
-        case ValuationCategory.underValued:
-          this.undervaluedCompanies.push(company);
-          break;
       }
     }
   }
 
   private resetValuationCategories(): void {
+    this.undervaluedCompanies = [];
+    this.fairlyValuedCompanies = [];
     this.highlyOvervaluedCompanies = [];
     this.overvaluedCompanies = [];
-    this.fairlyValuedCompanies = [];
-    this.undervaluedCompanies = [];
   }
 
   private setValuationHeader(): void {
     this.valuationHeader = [
       { name: ValuationCategory.all, value: ValuationCategory.all },
+      { name: ValuationCategory.underValued, value: ValuationCategory.underValued },
+      { name: ValuationCategory.fairlyValued, value: ValuationCategory.fairlyValued },
       { name: ValuationCategory.overValued, value: ValuationCategory.overValued },
       { name: ValuationCategory.highlyOverValued, value: ValuationCategory.highlyOverValued },
-      { name: ValuationCategory.fairlyValued, value: ValuationCategory.fairlyValued },
-      { name: ValuationCategory.underValued, value: ValuationCategory.underValued },
     ]
   }
 

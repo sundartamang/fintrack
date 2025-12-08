@@ -19,31 +19,42 @@
     display: flex;
     justify-content: end;
 
-    .search-input{
+    .search-input {
         max-width: 350px !important;
     }
 }
 
-/* make second column sticky */
-.valuation-table-sticky ::ng-deep .p-datatable-tbody > tr > td:nth-child(2),
-.valuation-table-sticky ::ng-deep .p-datatable-thead > tr > th:nth-child(2) {
-    position: sticky;
-    left: 15px;
-    z-index: 9;
-}
-
-.highly-overvalued{
+.highly-overvalued {
     color: var(--error);
 }
 
-.overvalued{
+.overvalued {
     color: var(--warning);
 }
 
-.fairly-valued{
+.fairly-valued {
     color: var(--info);
 }
 
-.undervalued{
+.undervalued {
     color: var(--success);
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.valuation-table-sticky ::ng-deep .p-datatable-tbody>tr>td:nth-child(2),
+.valuation-table-sticky ::ng-deep .p-datatable-thead>tr>th:nth-child(2) {
+    position: sticky;
+    left: 0px;
+    z-index: 9;
+}
+
+.valuation-table-sticky ::ng-deep .p-datatable-tbody>tr:nth-child(odd)>td:nth-child(2) {
+    background-color: var(--stripe-even);
+}
+
+.valuation-table-sticky ::ng-deep .p-datatable-tbody>tr:nth-child(even)>td:nth-child(2) {
+    background-color: var(--stripe-odd);
 }
