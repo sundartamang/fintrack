@@ -11,7 +11,6 @@ import { ANSU_FRONTED, BOOK_VALUE_PER_SHARE, EPS, HTTP_STATUS_OK, INTRINSIC_VALU
 import * as Highcharts from 'highcharts';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
-import { value } from '@primeuix/themes/aura/knob';
 
 @Component({
   selector: 'app-company-detail',
@@ -227,6 +226,7 @@ export class CompanyDetail implements OnInit, OnDestroy {
 
   private initializeChart(data: any): void {
     const chartColor = this.details?.indicator === 'increase' ? '#4ADE80' : '#FF7070';
+    const defaultYear = this.defaultYear;
 
     const convertedData = data.map((d: any) => [
       d[0] * 1000,  // convert seconds → ms
@@ -243,18 +243,25 @@ export class CompanyDetail implements OnInit, OnDestroy {
         align: 'left',
         style: { fontWeight: 'bold', fontSize: '14px' },
       },
-      legend: { enabled: false },
       xAxis: {
         type: 'datetime',
-        dateTimeLabelFormats: {
-          month: '%b', // 'Jan', 'Feb', etc.
-          year: '%Y',  // optional, if year ticks appear
+        title: {
+          text: null
         },
         labels: {
-          format: '{value:%b}' // Only show month abbreviation
+          formatter: function (this: Highcharts.AxisLabelsFormatterContextObject) {
+            const dateValue = this.value as number;
+
+            if (defaultYear === '5Y') {
+              return Highcharts.dateFormat('%b %Y', dateValue);
+            } else if (['Y', '6M'].includes(defaultYear)) {
+              return Highcharts.dateFormat('%b', dateValue);
+            } else {
+              return Highcharts.dateFormat('%b %e', dateValue);
+            }
+          }
         }
       },
-
       plotOptions: {
         area: {
           marker: { radius: 2 },
@@ -268,7 +275,6 @@ export class CompanyDetail implements OnInit, OnDestroy {
           const ts = Number(this.x);
           const dateStr = Highcharts.dateFormat('%A, %B %e, %Y', ts);
 
-          // Safely handle null or undefined
           const valueStr = this.y != null ? this.y.toLocaleString() : 'N/A';
 
           return `
@@ -287,6 +293,7 @@ export class CompanyDetail implements OnInit, OnDestroy {
         }
       ],
       credits: { enabled: false },
+      legend: { enabled: false },
     };
   }
 

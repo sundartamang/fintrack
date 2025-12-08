@@ -36,3 +36,41 @@ table.striperow {
         }
     }
 }
+
+// high chart scss 
+.highcharts-yaxis-labels {
+    text {
+        color: var(--primary-color) !important;
+        fill: var(--primary-color) !important;
+    }
+}
+
+.highcharts-xaxis-labels {
+    text {
+        color: var(--primary-color) !important;
+        fill: var(--primary-color) !important;
+    }
+}
+
+.highcharts-yaxis-grid {
+    path {
+        color: var(--border) !important;
+        fill: var(--border) !important;
+        stroke: var(--border) !important;
+    }
+}
+
+.highcharts-xaxis {
+    path {
+        color: var(--border) !important;
+        fill: var(--border) !important;
+        stroke: var(--border) !important;
+        stroke-width: 2 !important;
+    }
+}
+
+.highcharts-yaxis{
+    text{
+        display: none !important;
+    }
+}

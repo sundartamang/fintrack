@@ -93,34 +93,3 @@ table {
 .pi {
     cursor: pointer;
 }
-
-::ng-deep .highcharts-yaxis-labels {
-    text {
-        color: var(--primary-color) !important;
-        fill: var(--primary-color) !important;
-    }
-}
-
-::ng-deep .highcharts-xaxis-labels {
-    text {
-        color: var(--primary-color) !important;
-        fill: var(--primary-color) !important;
-    }
-}
-
-::ng-deep .highcharts-yaxis-grid {
-    path {
-        color: var(--border) !important;
-        fill: var(--border) !important;
-        stroke: var(--border) !important;
-    }
-}
-
-::ng-deep .highcharts-xaxis {
-    path {
-        color: var(--border) !important;
-        fill: var(--border) !important;
-        stroke: var(--border) !important;
-        stroke-width: 2 !important;
-    }
-}
